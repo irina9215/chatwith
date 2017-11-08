@@ -1,6 +1,6 @@
-# vue-cli-todomvc
+# chat app
 
-> Vue.js TodoMVC
+
 
 ## Build Setup
 
