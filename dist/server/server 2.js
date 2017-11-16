@@ -13,20 +13,7 @@ wss.on('connection', (ws) => {
     ws.on('message', (message) => {
         //log the received message and send it back to the client
         console.log('received: %s', message);
-        const broadcastRegex = /^broadcast\:/;
-        if (broadcastRegex.test(message)) {
-            message = message.replace(broadcastRegex, "");
-            // send back the message to the other bacl end
-            wss.clients
-                .forEach(client => {
-                if (client != ws) {
-                    client.send('Hello, broadcast message -> ${message}');
-                }
-            });
-        }
-        else {
-            ws.send(`Hello, you sent -> ${message}`);
-        }
+        ws.send(`Hello, you sent -> ${message}`);
     });
     //send immediatly a feedback to the incoming connection    
     ws.send('Hi there, I am a WebSocket server');
